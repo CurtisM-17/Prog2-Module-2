@@ -17,6 +17,7 @@ public class Plane : MonoBehaviour
 
 	int planesInDangerZone = 0;
 	SpriteRenderer sRender;
+	public bool isLanding;
 
 	private void Start()
 	{
@@ -68,8 +69,9 @@ public class Plane : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.GetKey(KeyCode.Space))
+		if (isLanding)
 		{
+			//// Landing
 			landingTimer += 0.1f * Time.deltaTime;
 			float lerp = landing.Evaluate(landingTimer);
 			if (transform.localScale.z < 0.1f)

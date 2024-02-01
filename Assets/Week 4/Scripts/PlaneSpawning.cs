@@ -11,7 +11,6 @@ public class PlaneSpawning : MonoBehaviour
 
 	public GameObject blankPlane;
 	public List<Sprite> planePrefabs;
-	public GameObject planeContainer;
 
 	private void Start()
 	{
