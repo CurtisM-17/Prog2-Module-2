@@ -32,7 +32,6 @@ public class PlaneSpawning : MonoBehaviour
 	{
 		lastSpawnTime = timer;
 
-		Debug.Log("New plane");
 		NewInterval();
 
 		// Position

@@ -13,11 +13,16 @@ public class Plane : MonoBehaviour
 	public float speed = 1f;
 	public AnimationCurve landing;
 	float landingTimer = 0f;
+	public float destroyDistance = 1f;
+
+	int planesInDangerZone = 0;
+	SpriteRenderer sRender;
 
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
 		lr = GetComponent<LineRenderer>();
+		sRender = GetComponent<SpriteRenderer>();
 
 		lr.positionCount = 1;
 		lr.SetPosition(0, transform.position);
@@ -84,5 +89,32 @@ public class Plane : MonoBehaviour
 			}
 			lr.positionCount--;
 		}
+	}
+
+	private void OnTriggerEnter2D(Collider2D collision) {
+		if (collision.gameObject.layer != 3) return; // Must be plane
+
+		planesInDangerZone++;
+
+		sRender.color = Color.red;
+		
+		if (Vector3.Distance(transform.position, collision.gameObject.transform.position) <= destroyDistance) {
+			Destroy(collision.gameObject);
+			Destroy(gameObject);
+		}
+	}
+
+	private void OnTriggerExit2D(Collider2D collision) {
+		if (collision.gameObject.layer != 3) return; // Must be plane
+
+		planesInDangerZone--;
+
+		if (planesInDangerZone == 0) {
+			sRender.color = Color.white;
+		}
+	}
+
+	private void OnBecameInvisible() {
+		Destroy(gameObject);
 	}
 }
