@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Knight : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Knight : MonoBehaviour
 	public float maxHealth = 5;
 	public float health;
 	public HealthBar healthBar;
+	public Slider slider;
 
 	public float clickDamage = 1;
 
@@ -54,7 +56,7 @@ public class Knight : MonoBehaviour
 		if (isDead) return;
 
 		clickedOnSelf = true;
-		TakeDamage(clickDamage);
+		gameObject.SendMessage("TakeDamage", clickDamage);
 	}
 
 	private void OnMouseUp()
@@ -66,7 +68,7 @@ public class Knight : MonoBehaviour
 	{
 		health -= dmg;
 		health = Mathf.Clamp(health, 0, maxHealth);
-		healthBar.TakeDamage(dmg);
+		slider.value = health;
 
 		if (health <= 0)
 		{
