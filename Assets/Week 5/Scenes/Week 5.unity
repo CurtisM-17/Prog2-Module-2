@@ -1376,7 +1376,6 @@ GameObject:
   - component: {fileID: 6291414426032972179}
   - component: {fileID: 6291414426032972178}
   - component: {fileID: 6291414426032972180}
-  - component: {fileID: 6291414426032972181}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Untagged
@@ -1426,7 +1425,6 @@ MonoBehaviour:
   speed: 3
   maxHealth: 5
   health: 0
-  healthBar: {fileID: 6291414426032972181}
   slider: {fileID: 886252204}
   clickDamage: 1
 --- !u!95 &6291414426032972180
@@ -1450,18 +1448,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6291414426032972181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6291414426032972176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 589dd40e1306e4c619750dfe1cda08ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &6520560959185367159
 SpriteRenderer:
   m_ObjectHideFlags: 0

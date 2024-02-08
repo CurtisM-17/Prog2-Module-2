@@ -12,7 +12,6 @@ public class Knight : MonoBehaviour
 	bool clickedOnSelf, isDead;
 	public float maxHealth = 5;
 	public float health;
-	public HealthBar healthBar;
 	public Slider slider;
 
 	public float clickDamage = 1;
@@ -32,6 +31,11 @@ public class Knight : MonoBehaviour
 		if (Input.GetMouseButtonDown(0) && !clickedOnSelf)
 		{
 			destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		}
+
+		if (Input.GetMouseButtonDown(1)) {
+			/// Attack
+			animator.SetTrigger("Attack");
 		}
 
 		animator.SetFloat("Movement", movement.magnitude);
