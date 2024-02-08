@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 1, y: 0}
-  speed: 6
+  speed: 8
   damage: 2
 --- !u!212 &5126514012709472737
 SpriteRenderer:
