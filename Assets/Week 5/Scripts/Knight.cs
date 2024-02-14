@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Knight : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class Knight : MonoBehaviour
 	{
 		if (isDead) return;
 
-		if (Input.GetMouseButtonDown(0) && !clickedOnSelf)
+		if (Input.GetMouseButtonDown(0) && !clickedOnSelf && !EventSystem.current.IsPointerOverGameObject())
 		{
 			destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		}
@@ -79,7 +80,7 @@ public class Knight : MonoBehaviour
 			isDead = true;
 			animator.SetTrigger("Die");
 		}
-		else
+		else if (dmg > 0)
 		{
 			isDead = false;
 			animator.SetTrigger("Hurt");
