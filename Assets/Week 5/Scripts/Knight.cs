@@ -11,7 +11,7 @@ public class Knight : MonoBehaviour
 	Vector2 destination, movement;
 	public float speed = 3f;
 	bool clickedOnSelf, isDead;
-	public float maxHealth = 5;
+	public float maxHealth = 5f;
 	public float health;
 	public Slider slider;
 
@@ -22,7 +22,9 @@ public class Knight : MonoBehaviour
 		rb = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
 
-		health = maxHealth;
+		health = PlayerPrefs.GetFloat("PlayerHealth", maxHealth);
+
+		SendMessage("TakeDamage", 0f, SendMessageOptions.DontRequireReceiver); // Sync animation and health
 	}
 
 	private void Update()
@@ -74,6 +76,8 @@ public class Knight : MonoBehaviour
 		health -= dmg;
 		health = Mathf.Clamp(health, 0, maxHealth);
 		slider.value = health;
+
+		PlayerPrefs.SetFloat("PlayerHealth", health);
 
 		if (health <= 0)
 		{
