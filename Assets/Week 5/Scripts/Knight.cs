@@ -80,10 +80,10 @@ public class Knight : MonoBehaviour
 			isDead = true;
 			animator.SetTrigger("Die");
 		}
-		else if (dmg > 0)
+		else
 		{
+			if (dmg > 0 || isDead) animator.SetTrigger("Hurt");
 			isDead = false;
-			animator.SetTrigger("Hurt");
 		}
 	}
 }
