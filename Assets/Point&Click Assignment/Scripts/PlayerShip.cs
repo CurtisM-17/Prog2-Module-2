@@ -3,8 +3,6 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
-using UnityEngine.UIElements;
 
 public class PlayerShip : MonoBehaviour
 {
@@ -20,6 +18,10 @@ public class PlayerShip : MonoBehaviour
 	bool decelerating = false;
 	float speedChangeDist = 0f;
 	bool isBoosting = false;
+	float gameTimer = 0;
+
+	int maxHealth = 100;
+	public int health;
 
 	public GameObject movingThrusters, boostingThrusters;
 
@@ -30,6 +32,12 @@ public class PlayerShip : MonoBehaviour
 		trail = GetComponent<TrailRenderer>();
 
 		destination = transform.position;
+
+		beltSpriteRenderer = rocketBelt.GetComponent<SpriteRenderer>();
+
+		health = maxHealth;
+
+		boost = maxBoost;
 	}
 
 	bool lerpingToAimPos = false;
@@ -40,7 +48,15 @@ public class PlayerShip : MonoBehaviour
 	public float boostMultiplier = 2f;
 
 	private void Update() {
-		///////////// STANDARD MOVEMENT /////////////
+		Movement();
+
+		CheckBoost(); // Boosting
+
+		Shooting(); // Shooting
+	}
+
+	///////////// STANDARD MOVEMENT /////////////
+	void Movement() {
 		if (Input.GetMouseButton(1)) {
 			// Button HOLD
 			destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -123,20 +139,104 @@ public class PlayerShip : MonoBehaviour
 				lerpingToAimPos = false;
 			}
 		}
+	}
 
-		///////////// BOOSTING /////////////
-		if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && !decelerating && speed > 0) {
-			movingThrusters.SetActive(false);
-			boostingThrusters.SetActive(true);
+	///////////// BOOSTING /////////////
+	float maxBoost = 100;
+	public float boostDeplenishRate = 0.5f;
+	public Slider boostMeter;
+	float boost;
 
-			speed = maxSpeed * boostMultiplier;
-			trail.emitting = true;
+	void CheckBoost() {
+		if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && !decelerating && speed > 0 && boost > 0) {
+			if (!isBoosting) {
+				movingThrusters.SetActive(false);
+				boostingThrusters.SetActive(true);
+
+				speed = maxSpeed * boostMultiplier;
+				trail.emitting = true;
+				isBoosting = true;
+			}
+
+			if (boost > boostDeplenishRate)
+				boost -= boostDeplenishRate;
+			else boost = 0;
 		} else {
-			boostingThrusters.SetActive(false);
-			trail.emitting = false;
+			if (isBoosting) {
+				boostingThrusters.SetActive(false);
+				trail.emitting = false;
+				isBoosting = false;
 
-			if (speed > maxSpeed) speed = maxSpeed;
+				if (speed > maxSpeed) speed = maxSpeed;
+			}
 		}
+
+		boostMeter.value = boost;
+	}
+
+	public bool ReplenishBoost(int amount) {
+		if (boost >= maxBoost) return false;
+
+		if (boost + amount > maxBoost) boost = maxBoost;
+		else boost += amount;
+
+		return true;
+	}
+
+	///////////// SHOOTING /////////////
+	float lastShot = 0;
+	float lastReload = 0;
+	public float fireRate = 0.1f;
+	public float reloadRate = 0.5f;
+	public GameObject rocket, rocketBelt;
+	SpriteRenderer beltSpriteRenderer;
+	public Sprite[] rocketBeltStates;
+	public GameObject[] rocketSpawnPositions;
+
+	int loadedRockets = 6;
+
+	void Shooting() {
+		gameTimer += Time.deltaTime;
+
+		// Respawning
+		if (loadedRockets < 6) {
+			if (gameTimer - lastShot >= reloadRate*2 && gameTimer - lastReload >= reloadRate) {
+				lastReload = gameTimer;
+				loadedRockets++;
+				UpdateBeltGraphic();
+			}
+		}
+
+		if (!Input.GetMouseButton(0)) return;
+		if (gameTimer - lastShot < fireRate) return;
+		if (loadedRockets <= 0) return;
+
+		lastShot = gameTimer;
+
+		GameObject newRocket = Instantiate(rocket);
+		GameObject spawnPos = rocketSpawnPositions[loadedRockets - 1];
+
+		newRocket.transform.SetPositionAndRotation(spawnPos.transform.position, spawnPos.transform.rotation);
+
+		loadedRockets--;
+		UpdateBeltGraphic();
+	}
+
+	public Slider ammoMeter;
+	void UpdateBeltGraphic() {
+		if (loadedRockets > 0) {
+			beltSpriteRenderer.enabled = true;
+			beltSpriteRenderer.sprite = rocketBeltStates[loadedRockets - 1];
+		} else beltSpriteRenderer.enabled = false;
+
+		ammoMeter.value = loadedRockets;
+	}
+
+	///////////// HEALTH /////////////
+	public Slider healthBar;
+	public void IncrementHealth(int increment) {
+		health += increment;
+		healthBar.value = health;
 	}
 
 	private void FixedUpdate() {
