@@ -19,6 +19,7 @@ public class PlayerShip : MonoBehaviour
 	float speedChangeDist = 0f;
 	bool isBoosting = false;
 	float gameTimer = 0;
+	Animator animator;
 
 	int maxHealth = 100;
 	public int health;
@@ -30,6 +31,7 @@ public class PlayerShip : MonoBehaviour
 	private void Start() {
 		rb = GetComponent<Rigidbody2D>();
 		trail = GetComponent<TrailRenderer>();
+		animator = GetComponent<Animator>();
 
 		destination = transform.position;
 
@@ -61,6 +63,8 @@ public class PlayerShip : MonoBehaviour
 		Shooting(); // Shooting
 
 		HealthPadSpawning();
+
+		animator.SetFloat("PlayerHealth", health);
 	}
 
 	///////////// STANDARD MOVEMENT /////////////
@@ -178,7 +182,7 @@ public class PlayerShip : MonoBehaviour
 			}
 
 			if (boost > boostDeplenishRate)
-				boost -= boostDeplenishRate;
+				boost -= boostDeplenishRate * Time.deltaTime;
 			else boost = 0;
 		} else {
 			if (isBoosting) {

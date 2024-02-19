@@ -30,7 +30,6 @@ public class BoostPad : MonoBehaviour
 		collected = true;
 		collectedAt = timer;
 
-		//gameObject.SetActive(false);
 		sr.enabled = false;
 	}
 }
