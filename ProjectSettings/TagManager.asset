@@ -6,6 +6,9 @@ TagManager:
   tags:
   - HealthPickup
   - BoostPickup
+  - PlayerRocket
+  - EnemyRocket
+  - Planet
   layers:
   - Default
   - TransparentFX
@@ -17,8 +20,8 @@ TagManager:
   - Knight
   - Player
   - Powerup
-  - 
-  - 
+  - EnemyBullet
+  - Planet
   - 
   - 
   - 

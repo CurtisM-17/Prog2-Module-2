@@ -23,7 +23,7 @@ public class Planet : MonoBehaviour
 		healthDisplay.value = health;
 	}
 
-	public void DamagePlanet(float dmg) {
+	public void Damage(float dmg) {
 		health -= dmg;
 
 		if (health < 0) {

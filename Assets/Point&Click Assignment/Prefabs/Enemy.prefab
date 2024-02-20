@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6752241933003464121}
+  - component: {fileID: 8509403025199251011}
   - component: {fileID: 7529491911164292786}
   - component: {fileID: 7715451363006792748}
   - component: {fileID: 8412036596084802796}
@@ -37,6 +38,27 @@ Transform:
   - {fileID: 1006732099835909018}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8509403025199251011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163981889198554102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1492ab5262522854e87f561dfc514b5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  speed: 0.4
+  attackDistance: 2
+  stoppingDistance: 1
+  explosion: {fileID: 4624730448637916072}
+  weapons: {fileID: 7351596921494848827}
+  shootingDistance: 2
+  shotRate: 2
+  bulletPrefab: {fileID: 6934113467512153048, guid: 09260982916bc4e47bff64d2591a0779, type: 3}
 --- !u!212 &7529491911164292786
 SpriteRenderer:
   m_ObjectHideFlags: 0

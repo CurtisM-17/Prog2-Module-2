@@ -95,7 +95,12 @@ public class PlayerShip : MonoBehaviour
 				rotLerpTime = (dist / rotSpeed);
 			}
 
-			if (!lerpingToAimPos) rb.rotation = rotationAngle;
+			if (!lerpingToAimPos) {
+				float rot = rotationAngle;
+				if (Input.GetKey(KeyCode.Space)) rot -= 180;
+
+				rb.rotation = rot;
+			}
 
 			// Accelerate
 			if (!isBoosting) {
@@ -162,6 +167,15 @@ public class PlayerShip : MonoBehaviour
 		if (showClickIcon) {
 			clickIcon.transform.position = destination + new Vector2(0.1f, 0.05f);
 		}
+	}
+
+	private void FixedUpdate() {
+		// Move in face direction
+		Vector2 dir = transform.up;
+
+		if (Input.GetKey(KeyCode.Space)) dir *= -1;
+
+		rb.MovePosition(speed * Time.deltaTime * dir + rb.position);
 	}
 
 	///////////// BOOSTING /////////////
@@ -263,11 +277,12 @@ public class PlayerShip : MonoBehaviour
 		else health += increment;
 
 		healthBar.value = health;
+
+		if (health == 0) Die();
 	}
 
-	private void FixedUpdate() {
-		// Move in face direction
-		rb.MovePosition(speed * Time.deltaTime * (Vector2)transform.up + rb.position);
+	void Die() {
+		Debug.Log("Dead");
 	}
 
 	///////////// POWERUPS /////////////
