@@ -49,6 +49,8 @@ public class Enemy : MonoBehaviour
 			CalculateAngle();
 		}
 
+		if (targetPos == Vector3.zero) distFromTarget = transform.position.magnitude;
+
 		Shooting(distFromTarget);
 	}
 
