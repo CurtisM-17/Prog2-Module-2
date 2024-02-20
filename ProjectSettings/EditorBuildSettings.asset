@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Week 5/Scenes/Week 5.unity
     guid: 9b158c52cb2464161b59b44e8332ffe8
+  - enabled: 1
+    path: Assets/Point&Click Assignment/Scenes/StartMenu.unity
+    guid: 82476af62ca993245a1256b36217db83
+  - enabled: 1
+    path: Assets/Point&Click Assignment/Scenes/GameScene.unity
+    guid: 74741cdfed632eb4d8f9608d809d8088
+  - enabled: 1
+    path: Assets/Point&Click Assignment/Scenes/DeathScreen.unity
+    guid: 7299634be9eb39147999af760c277faf
   m_configObjects: {}

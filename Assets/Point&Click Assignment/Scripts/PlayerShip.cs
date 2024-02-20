@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerShip : MonoBehaviour
 {
@@ -282,7 +283,7 @@ public class PlayerShip : MonoBehaviour
 	}
 
 	void Die() {
-		Debug.Log("Dead");
+		SceneManager.LoadScene(2);
 	}
 
 	///////////// POWERUPS /////////////

@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class Planet : MonoBehaviour
 {
@@ -28,7 +29,9 @@ public class Planet : MonoBehaviour
 
 		if (health < 0) {
 			health = 0;
-			Debug.Log("Dead");
+
+			/// Death screen
+			SceneManager.LoadScene(2);
 		}
 	}
 

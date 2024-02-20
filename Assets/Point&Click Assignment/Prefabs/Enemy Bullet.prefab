@@ -50,7 +50,7 @@ MonoBehaviour:
   lifetime: 5
   speed: 1
   planetDamage: 15
-  playerDamage: 10
+  playerDamage: 25
 --- !u!212 &8260702407544366384
 SpriteRenderer:
   m_ObjectHideFlags: 0

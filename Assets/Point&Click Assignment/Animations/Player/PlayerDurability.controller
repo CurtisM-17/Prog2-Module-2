@@ -10,7 +10,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 4
     m_ConditionEvent: PlayerHealth
-    m_EventTreshold: 25
+    m_EventTreshold: 26
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3692750379348990511}
   m_Solo: 0
@@ -35,10 +35,10 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: PlayerHealth
-    m_EventTreshold: 50
+    m_EventTreshold: 49
   - m_ConditionMode: 4
     m_ConditionEvent: PlayerHealth
-    m_EventTreshold: 75
+    m_EventTreshold: 76
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4931381387005276395}
   m_Solo: 0
@@ -63,7 +63,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 4
     m_ConditionEvent: PlayerHealth
-    m_EventTreshold: 25
+    m_EventTreshold: 26
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3692750379348990511}
   m_Solo: 0
@@ -88,10 +88,10 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: PlayerHealth
-    m_EventTreshold: 25
+    m_EventTreshold: 24
   - m_ConditionMode: 4
     m_ConditionEvent: PlayerHealth
-    m_EventTreshold: 50
+    m_EventTreshold: 51
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5891677206990826287}
   m_Solo: 0
@@ -145,7 +145,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: PlayerHealth
-    m_EventTreshold: 75
+    m_EventTreshold: 74
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2126398883912463665}
   m_Solo: 0
@@ -170,7 +170,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: PlayerHealth
-    m_EventTreshold: 75
+    m_EventTreshold: 74
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2126398883912463665}
   m_Solo: 0
@@ -224,7 +224,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 4
     m_ConditionEvent: PlayerHealth
-    m_EventTreshold: 25
+    m_EventTreshold: 26
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3692750379348990511}
   m_Solo: 0
@@ -249,10 +249,10 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: PlayerHealth
-    m_EventTreshold: 50
+    m_EventTreshold: 49
   - m_ConditionMode: 4
     m_ConditionEvent: PlayerHealth
-    m_EventTreshold: 75
+    m_EventTreshold: 76
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4931381387005276395}
   m_Solo: 0
@@ -277,7 +277,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: PlayerHealth
-    m_EventTreshold: 75
+    m_EventTreshold: 74
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2126398883912463665}
   m_Solo: 0
@@ -306,7 +306,7 @@ AnimatorController:
     m_DefaultFloat: 100
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -359,10 +359,10 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: PlayerHealth
-    m_EventTreshold: 50
+    m_EventTreshold: 49
   - m_ConditionMode: 4
     m_ConditionEvent: PlayerHealth
-    m_EventTreshold: 75
+    m_EventTreshold: 76
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4931381387005276395}
   m_Solo: 0
@@ -387,10 +387,10 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: PlayerHealth
-    m_EventTreshold: 25
+    m_EventTreshold: 24
   - m_ConditionMode: 4
     m_ConditionEvent: PlayerHealth
-    m_EventTreshold: 50
+    m_EventTreshold: 51
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5891677206990826287}
   m_Solo: 0
@@ -475,10 +475,10 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: PlayerHealth
-    m_EventTreshold: 25
+    m_EventTreshold: 24
   - m_ConditionMode: 4
     m_ConditionEvent: PlayerHealth
-    m_EventTreshold: 50
+    m_EventTreshold: 51
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5891677206990826287}
   m_Solo: 0
