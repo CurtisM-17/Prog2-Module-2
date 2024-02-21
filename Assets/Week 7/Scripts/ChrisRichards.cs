@@ -6,12 +6,10 @@ using UnityEngine;
 
 public class ChrisRichards : MonoBehaviour
 {
-	//public GameObject ball;
-	//public GameObject goal;
-
 	Rigidbody2D rb;
 	SpriteRenderer sr;
 	static Color selectedColor;
+	public float speed = 10f;
 
 	private void Start()
 	{
@@ -19,11 +17,12 @@ public class ChrisRichards : MonoBehaviour
 		sr = GetComponent<SpriteRenderer>();
 
 		selectedColor = sr.color;
+		Selected(false);
 	}
 
 	private void OnMouseDown()
 	{
-		Selected(true);
+		GettingRelegatedFromLeagueOne.SetSelectedPlayer(this);
 	}
 
 	public void Selected(bool isSelected)
@@ -35,5 +34,10 @@ public class ChrisRichards : MonoBehaviour
 		{
 			sr.color = selectedColor;
 		}
+	}
+
+	public void Move(Vector2 direction)
+	{
+		rb.AddForce(direction * speed, ForceMode2D.Impulse);
 	}
 }
