@@ -9,6 +9,7 @@ TagManager:
   - PlayerRocket
   - EnemyRocket
   - Planet
+  - Goal
   layers:
   - Default
   - TransparentFX

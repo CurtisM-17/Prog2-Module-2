@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GettingRelegatedFromLeagueOne : MonoBehaviour
 {
@@ -11,8 +12,10 @@ public class GettingRelegatedFromLeagueOne : MonoBehaviour
 	public float maxCharge = 1f;
 	Vector2 direction;
 	public float chargeSpeed = 1f;
+	public TextMeshProUGUI scoreDisplay;
 
 	public static ChrisRichards SelectedPlr { get; private set; }
+	public static int Score { get; private set; }
 
 	public static void SetSelectedPlayer(ChrisRichards plr)
 	{
@@ -23,6 +26,16 @@ public class GettingRelegatedFromLeagueOne : MonoBehaviour
 
 		plr.Selected(true);
 		SelectedPlr = plr;
+	}
+
+	public static void IncrementScore(int inc)
+	{
+		Score += inc;
+	}
+
+	public void UpdateScoreboard()
+	{
+		scoreDisplay.text = Score.ToString() + " : 0";
 	}
 
 	private void FixedUpdate()
